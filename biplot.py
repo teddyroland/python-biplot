@@ -25,11 +25,8 @@ pca.fit(dat)
 xaxis = pca.components_[0] # see pca$rotation in R
 yaxis = pca.components_[1] # change 0,1 for other principle components
 
-xs = []
-ys = []
-for x in pca.transform(dat): # see pca$x in R
-    xs.append(x[0])          # change 0,1 for other principle components
-    ys.append(x[1])
+xs = pca.transform(dat)[:,0] # see pca$x in R
+ys = pca.transform(dat)[:,1] # change 0,1 for other principle components
 
 
 
