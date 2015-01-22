@@ -22,9 +22,11 @@ pca.fit(dat)
 
 ## project data into PC space
 
+# features (data columns)
 xaxis = pca.components_[0] # see pca$rotation in R
 yaxis = pca.components_[1] # change 0,1 for other principle components
 
+# documents (data rows)
 xs = pca.transform(dat)[:,0] # see pca$x in R
 ys = pca.transform(dat)[:,1] # change 0,1 for other principle components
 
@@ -36,14 +38,14 @@ ys = pca.transform(dat)[:,1] # change 0,1 for other principle components
 ##       so feel free to play around with them
 
 for i in range(len(xaxis)):
-# arrows project features (ie columns from csv) as vectors onto PC axes
+# arrows, project features as vectors onto PC axes
     plt.arrow(0, 0, xaxis[i]*max(xs), yaxis[i]*max(ys),
               color='r', width=0.0005, head_width=0.0025)
     plt.text(xaxis[i]*max(xs)*1.2, yaxis[i]*max(ys)*1.2,
              list(dat.columns.values)[i], color='r')
 
 for i in range(len(xs)):
-# circles project documents (ie rows from csv) as points onto PC axes
+# circles, project documents as points onto PC axes
     plt.plot(xs[i], ys[i], 'bo')
     plt.text(xs[i]*1.2, ys[i]*1.2, list(dat.index)[i], color='b')
 
