@@ -17,8 +17,8 @@ dat = pd.read_csv(my_csv, index_col=0)
 n = len(dat.columns)
 
 pca = PCA(n_components = n)
-# defaults # PCs to # of columns in imported data, but can be set to any
-# integer less than or equal to that value
+# defaults number of PCs to number of columns in imported data (ie number of
+# features), but can be set to any integer less than or equal to that value
 
 pca.fit(dat)
 
@@ -26,11 +26,12 @@ pca.fit(dat)
 
 ## project data into PC space
 
-xvector = pca.components_[0] # see pca$rotation in R
-yvector = pca.components_[1] # change 0,1 for other principle components
+# 0,1 denote PC1 and PC2; change values for other PCs
+xvector = pca.components_[0] # see 'prcomp(my_data)$rotation' in R
+yvector = pca.components_[1]
 
-xs = pca.transform(dat)[:,0] # see pca$x in R
-ys = pca.transform(dat)[:,1] # change 0,1 for other principle components
+xs = pca.transform(dat)[:,0] # see 'prcomp(my_data)$x' in R
+ys = pca.transform(dat)[:,1]
 
 
 
