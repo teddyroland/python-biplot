@@ -4,7 +4,7 @@ from matplotlib import pyplot as plt
 
 ## import data
 
-my_csv = ## path to your dataset
+my_csv = 'data.csv' ## path to your dataset
 
 dat = pd.read_csv(my_csv, index_col=0)
 # if no row or column titles in your csv, pass 'header=None' into read_csv
